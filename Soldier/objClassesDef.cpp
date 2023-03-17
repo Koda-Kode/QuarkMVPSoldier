@@ -1,48 +1,18 @@
-#include <iostream> 
-#include <stdlib.h>
+#include <iostream>
 #include <string.h>
 using namespace std;
-
+#include "objClasses.hpp"
     // Clase Arma y herencia
-class Arma
-{
-protected:
-    char sonido[20];
-    char nombre[20];
-public:
-    virtual ~Arma(){cout << "Destruir clase madre" << endl;}
-    void nombrar(){cout << nombre;}
-    void disparo(){cout << sonido << endl;}
-};
-
-class Revolver : public Arma
-{
-public:
-    Revolver();
-    ~Revolver(){cout << "Destruir revolver" << endl;}
-};
 
 Revolver::Revolver(){
     strcpy(sonido,"Pum");
     strcpy(nombre,"Revolver");
 }
 
-class Escopeta : public Arma
-{
-public:
-    Escopeta();
-};
-
 Escopeta::Escopeta(){
     strcpy(sonido,"Pam");
     strcpy(nombre,"Escopeta");
 }
-
-class Rifle : public Arma
-{
-public:
-    Rifle();
-};
 
 Rifle::Rifle(){
     strcpy(sonido,"Pum, pum, pum");
@@ -50,17 +20,6 @@ Rifle::Rifle(){
 }
 
     // Clase Soldado
-class Soldado
-{
-private:
-    Arma *actual = NULL;
-public:
-    void disparar();
-    void dejar();
-    void recoger(Arma* arma);
-    void armaActual();
-};
-
 void Soldado::recoger(Arma* arma){
     if (actual == NULL){
         actual = arma;

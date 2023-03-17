@@ -1,19 +1,15 @@
-#include <windows.h> 
-#include <iostream>
-#include <stdlib.h>
-#include <conio.h>
 #include <memory>
+    // Yep I'm lazy
 using namespace std;
 
-#include "view.hpp"
+#include "viewDef.cpp"
 
 
 int main(){
     unique_ptr<View> vista = make_unique<View>();
 
     vista->menuInicio();
-    vista->esperarInput();
-
+    vista->iniciarJuego();
 
     return 0;
 }

@@ -1,37 +1,23 @@
-#include <iostream>
+#pragma once
+#include <memory>
 using namespace std;
-#include "module.hpp"
+#include "objClassesDef.cpp"
 
 class Presenter
 {
 private:
-    unique_ptr<Model> mod = make_unique<Model>();
+        // Definir los objetos como punteros inteligentes
+    unique_ptr<Soldado> soldado = make_unique<Soldado>();
+    unique_ptr<Revolver> ptrRevolver = make_unique<Revolver>();
+    unique_ptr<Escopeta> ptrEscopeta = make_unique<Escopeta>();
+    unique_ptr<Rifle> ptrRifle = make_unique<Rifle>();
+        // Obtener punteros estandar para poder usarlos en funciones
+    Revolver* revolver = ptrRevolver.get();
+    Escopeta* escopeta = ptrEscopeta.get();
+    Rifle* rifle = ptrRifle.get();
 public:
     void presRecojer(int weapon);
-    void presDisparar(); void presDejar(); void presArmaActual();
+    void presDisparar();
+    void presDejar();
+    void presArmaActual();
 };
-
-
-
-void Presenter::presRecojer(int weapon){
-    if (weapon>0 && weapon<4)
-    {
-        mod->modRecojer(weapon);
-    }
-    else{
-        cout << "ID de arma no reconocida" << endl;
-    }
-    
-}
-
-void Presenter::presDisparar(){
-    mod->modDisparar();
-}
-
-void Presenter::presDejar(){
-    mod->modDejar();
-}
-
-void Presenter::presArmaActual(){
-    mod->modActual();
-}
